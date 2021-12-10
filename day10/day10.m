@@ -4,8 +4,7 @@ file = 'day10_data.txt';
 
 data = readmatrix(file, ...
     Delimiter='', ...
-    OutputType = 'string', ...
-    VariableWidth=ones(1000,1));
+    OutputType = 'string');
 
 %% Part 1
 for i = 1:numel(data)
