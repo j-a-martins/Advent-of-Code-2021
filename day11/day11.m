@@ -18,7 +18,7 @@ for i = 1:steps
     % Find elements at energy level 10 and flash them
     [a,b] = find(data == 10);
     for j = 1:numel(a)
-        data = flash(a(j),b(j), data);
+        data = flash(a(j), b(j), data);
     end
 
     % Determine flashed elements and count them
@@ -32,7 +32,7 @@ for i = 1:steps
 
     % Part 1: Report the total flashes at 100 steps
     if i == 100
-        disp("Part 1: Total flashes after " + i + " steps is " + flashes_count)
+        disp("Part 1: Total flashes after 100 steps is " + flashes_count)
     end
 
     % Part 2: Report simultaneous flashes
