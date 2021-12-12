@@ -10,15 +10,13 @@ data = readmatrix(file, Delimiter = '-', OutputType = 'string');
 G = graph(data(:, 1), data(:, 2));
 
 %% Part 1
-count_paths_part1 = 0;
 disp("----- Part 1 -----")
-count_paths_part1 = explore(G, string.empty, count_paths_part1, "start", 0);
+count_paths_part1 = explore(G, string.empty, 0, "start", 0);
 disp(" ")
 
 %% Part 2
-count_paths_part2 = 0;
 disp("----- Part 2 -----")
-count_paths_part2 = explore(G, string.empty, count_paths_part2, "start", 1);
+count_paths_part2 = explore(G, string.empty, 0, "start", 1);
 disp(" ")
 
 %% Display final counts
