@@ -26,7 +26,7 @@ disp("Part 1: There are " + count_paths_part1 + " paths");
 disp("Part 2: There are " + count_paths_part2 + " paths");
 
 %% Recursive exploration function
-function c_paths = explore(G, visited, c_paths, curr_node, small_caves_explorable)
+function c_paths = explore(G, visited, c_paths, curr_node, small_caves_allow_rep)
 % Stop criteria: ignore start node (useful for Part 2)
 if "start" == curr_node && numel(visited) > 1
     return
@@ -44,12 +44,12 @@ neigh = neighbors(G, curr_node);
 for i = 1:numel(neigh)
     % Check if uppercase (node can be visited again)
     if neigh(i) == upper(neigh(i))
-        c_paths = explore(G, visited, c_paths, neigh(i), small_caves_explorable);
+        c_paths = explore(G, visited, c_paths, neigh(i), small_caves_allow_rep);
     % Check if explored previously (visited is matching pattern)
     elseif ~contains(neigh(i), visited)
-        c_paths = explore(G, visited, c_paths, neigh(i), small_caves_explorable);
+        c_paths = explore(G, visited, c_paths, neigh(i), small_caves_allow_rep);
     % Part 2 exception for small nodes: check if already explored (now neigh is matching pattern)
-    elseif sum(count(visited, neigh(i))) <= small_caves_explorable
+    elseif sum(count(visited, neigh(i))) <= small_caves_allow_rep
         c_paths = explore(G, visited, c_paths, neigh(i), 0);
     end
 end
