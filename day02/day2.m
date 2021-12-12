@@ -59,7 +59,7 @@ for i = 1:height(data)
     switch data.Direction{i}
         case 'forward'
             x = x + data.X(i);
-            d = d + aim.*data.X(i);
+            d = d + aim .* data.X(i);
         case 'down'
             aim = aim + data.X(i);
         case 'up'
@@ -69,7 +69,6 @@ end
 e = toc(t);
 
 disp("Part 2 (iter): The final horizontal position by the final depth is " + d*x + " [time: " + e + "]")
-
 
 %% Reset format
 format default

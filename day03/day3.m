@@ -6,7 +6,7 @@ data = readmatrix('day3_data.txt');
 code = arrayfun(@(x) uint16(str2num(sprintf("0b%d", x))), data);
 
 %% Part 1
-digits = 12;  % Significant digits<16
+digits = 12; % Significant digits<16
 
 gamma = uint16(0);
 %epsilon = uint16(0);
@@ -15,8 +15,8 @@ for i = 1:digits
     gamma = bitset(gamma, i, value);
     %epsilon = bitset(epsilon, i, ~value);
 end
-epsilon = bitand(bitcmp(gamma), 0b0000111111111111);  % Clear unused precision
-disp("Part 1: The power consumption is " + single(gamma).*single(epsilon))
+epsilon = bitand(bitcmp(gamma), 0b0000111111111111); % Clear unused precision
+disp("Part 1: The power consumption is " + single(gamma)*single(epsilon))
 
 %% Part 2
 oxygen = code;
@@ -33,7 +33,7 @@ for i = digits:-1:1
     if numel(co2_scrubber) == 1, break, end
 end
 
-disp("Part 2: The life support rating is " + single(oxygen).*single(co2_scrubber))
+disp("Part 2: The life support rating is " + single(oxygen)*single(co2_scrubber))
 
 %% Misc (unused)
 %str_med = @(x) num2str(ceil(median(str2num(x))));
