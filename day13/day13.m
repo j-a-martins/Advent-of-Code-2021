@@ -22,7 +22,7 @@ for i = 1:numel(instruct) % Process all instructions
             coords(filt, 2) = mirror(coords(filt, 2), op(2));
     end
     coords = unique(coords, 'rows'); % Clear repeated rows
-    if i == 1, disp("Part 1: There are " + height(coords) + " visible dots at first fold"), end
+    if i == 1, disp("Part 1: There are " + height(coords) + " visible dots after the first fold"), end
 end
 
 %% Part 2
