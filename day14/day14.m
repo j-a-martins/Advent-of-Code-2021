@@ -11,6 +11,7 @@ for i = height(data):-1:2
     % Fill rules with matching pairs
     rules.(pairs(i-1,1)) = pairs(i-1,2:3);
 end
+%rules = orderfields(rules);  % For debugging
 
 % Calculate unique pair combinations
 pairs = char(unique(pairs));
