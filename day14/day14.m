@@ -3,7 +3,7 @@ function day14(steps)
 file = 'day14_example.txt';
 %file = 'day14_data.txt';
 
-data = readmatrix(file,Delimiter = '->', OutputType = 'string', NumHeaderLines = 0);
+data = readmatrix(file, Delimiter = '->', OutputType = 'string', NumHeaderLines = 0);
 
 for i = height(data):-1:2
     % Get all matching pairs
