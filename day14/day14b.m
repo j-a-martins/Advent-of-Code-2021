@@ -29,6 +29,7 @@ for step = 1:steps
             c_new.([pair(1) r]) = get_field(c_new, [pair(1) r]) + c_curr.(pair);
             c_new.([r pair(2)]) = get_field(c_new, [r pair(2)]) + c_curr.(pair);
         else
+            % No rule was found for this pair
             c_new.(pair) = c_curr.(pair);
         end
     end
@@ -63,6 +64,7 @@ disp("Part 1/2: " + elements(max_pos) + "(" + max_count + ") - " + ...
 end
 
 %% Helper: Returns a field value, or 0 if if does not exist
+% Similar functionality to a defaultdict in Python
 function v = get_field(S, k)
 if isfield(S, k)
     v = S.(k);
