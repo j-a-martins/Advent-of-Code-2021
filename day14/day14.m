@@ -33,8 +33,6 @@ for step = 1:steps
         % Increase both new pair counters by the ammount of the current pair
         c_new.(r(1)) = c_new.(r(1)) + c_curr.(pair);
         c_new.(r(2)) = c_new.(r(2)) + c_curr.(pair);
-        % Zero the current pair count (as it was replaced by the new pairs)
-        c_curr.(pair) = 0;
     end
     % Replace the current count with the new count
     c_curr = c_new;
