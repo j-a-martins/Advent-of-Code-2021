@@ -29,11 +29,16 @@ for step = 1:steps
     for pair = string(fieldnames(c_curr)).'
         % Skip if pair is unused
         if c_curr.(pair) == 0, continue, end
-        % Get the substitution rules for this pair
-        r = rules.(pair);
-        % Increase both new pair counters by the ammount of the current pair
-        c_new.(r(1)) = c_new.(r(1)) + c_curr.(pair);
-        c_new.(r(2)) = c_new.(r(2)) + c_curr.(pair);
+        if isfield(rules, pair)
+            % Get the substitution rules for this pair
+            r = rules.(pair);
+            % Increase both new pair counters by the ammount of the current pair
+            c_new.(r(1)) = c_new.(r(1)) + c_curr.(pair);
+            c_new.(r(2)) = c_new.(r(2)) + c_curr.(pair);
+        else
+            % No rule was found for this pair
+            c_new.(pair) = c_curr.(pair);
+        end
     end
     % Replace the current count with the new count
     c_curr = c_new;
