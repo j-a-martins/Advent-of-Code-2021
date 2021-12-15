@@ -54,17 +54,17 @@ for i = 1:h
 end
 end
 
-function data2 = expand_cave(data, exp_factor)
+function data = expand_cave(data, exp_factor)
 w = width(data); h = height(data);
 % Replicate data exp_factor by exp_factor
-data2 = repmat(data, exp_factor);
+data = repmat(data, exp_factor);
 % Add 1 by Manhattan distance across replicates 
 for i = 1:(exp_factor * h)
     for j = 1:(exp_factor * w)
-        data2(i, j) = data2(i, j) + floor((i - 1)/h) + floor((j - 1)/w);
+        data(i, j) = data(i, j) + floor((i - 1)/h) + floor((j - 1)/w);
         % Reduce by 9 when overflown (futureproofing: using div remainder)
-        if data2(i, j) > 9
-            data2(i, j) = max(1, rem(data2(i, j), 9)); % 0->1
+        if data(i, j) > 9
+            data(i, j) = max(1, rem(data(i, j), 9)); % 0->1
         end
     end
 end
