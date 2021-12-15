@@ -2,7 +2,7 @@
 file = 'day15_example.txt';
 %file = 'day15_data.txt';
 
-% Read data as strings -> char matrix -> singles matrix
+% Read data as string array -> char matrix -> single precision matrix
 data = single(char(readmatrix(file, Delimiter = "", OutputType = 'string', NumHeaderLines = 0))) - 48;
 
 %% Part 1
