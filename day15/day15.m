@@ -10,12 +10,12 @@ data = single(char(readmatrix(file, Delimiter = "", OutputType = 'string', NumHe
 %% Part 1
 [P, d] = shortest_path_tl_br(data);
 disp("Part 1: The lowest total risk is " + d + " on path (" + strjoin(P,')->(') + ")")
-if ~nargin, assert(d == 40, "Part 1 is incorrect."), end
+if ~nargin, assert(d == 40, "Part 1 is incorrect."), end % Validate example puzzle
 
 %% Part 2
 [P, d] = shortest_path_tl_br(expand_cave(data, 5));
 disp("Part 2: The lowest total risk is " + d + " on path (" + strjoin(P,')->(') + ")")
-if ~nargin, assert(d == 315, "Part 2 is incorrect."), end
+if ~nargin, assert(d == 315, "Part 2 is incorrect."), end % Validate example puzzle
 end
 
 %% Auxiliar functions
