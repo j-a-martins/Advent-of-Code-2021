@@ -1,7 +1,7 @@
 % (): Run example puzzle, (<anything>): Run personal puzzle
 function day15(~)
 %% Read data from current folder
-p = pwd; p = p(end-4:end);
+p = cd; p = p(end-4:end);
 switch nargin, case 0, file = p + "_example.txt"; otherwise, file = p + "_data.txt"; end
 
 % Read data as string array -> char matrix -> single precision matrix
