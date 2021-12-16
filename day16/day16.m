@@ -22,13 +22,13 @@ for i = numel(cell_enc_packets):-1:1
 
     %% Part 1
     disp("Part 1: The sum of version numbers is " + c_version(i))
-    if nargin, assert(c_version(i) == 981, "Part 1 is incorrect."), end % Validate example puzzle
-    if ~nargin, assert(c_version(i) == data.version_sum(i), "Part 1 is incorrect."), end % Validate personal puzzle
+    if nargin, assert(c_version(i) == 981, "Part 1 is incorrect."), end % Validate personal puzzle
+    if ~nargin, assert(c_version(i) == data.version_sum(i), "Part 1 is incorrect."), end % Validate example puzzles
 
     %% Part 2
     disp("Part 2: The transmission value is " + dec_packet(i).value)
-    if nargin, assert(dec_packet(i).value == 299227024091, "Part 2 is incorrect."), end % Validate example puzzle
-    if ~nargin, assert(dec_packet(i).value == data.eval(i), "Part 2 is incorrect."), end % Validate personal puzzle
+    if nargin, assert(dec_packet(i).value == 299227024091, "Part 2 is incorrect."), end % Validate personal puzzle
+    if ~nargin, assert(dec_packet(i).value == data.eval(i), "Part 2 is incorrect."), end % Validate example puzzles
 end
 end
 
