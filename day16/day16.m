@@ -72,7 +72,7 @@ p = 1; % Packet counter
 while true
     % Break if a #packets limit is defined
     if p > c_proc_limit, break, end
-    % Break if bit pointer is above min packet size
+    % Break if bit pointer is above the min packet size (11 bits)
     if i - 1 > numel(enc_packet) - 11, break, end
     % Read version
     [dec_packet(p).version, i] = read_field_dec(enc_packet, i, fmt.version);
