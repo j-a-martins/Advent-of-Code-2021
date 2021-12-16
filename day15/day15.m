@@ -5,7 +5,7 @@ p = cd; p = p(end-4:end);
 switch nargin, case 0, file = p + "_example.txt"; otherwise, file = p + "_data.txt"; end
 
 % Read data as string array -> char matrix -> single precision matrix
-data = single(char(readmatrix(file, Delimiter = "", OutputType = 'string', NumHeaderLines = 0))) - 48;
+data = single(char(readmatrix(file, Delimiter = "", OutputType = 'string', NumHeaderLines = 0))) - '0';
 
 %% Part 1
 [P, d] = shortest_path_tl_br(data);
