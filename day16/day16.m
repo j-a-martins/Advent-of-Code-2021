@@ -89,10 +89,10 @@ while true
             [length_type_id, i] = read_field_dec(enc_packet, i, fmt.type_op.length_type_id);
             % Process length type id
             switch length_type_id
-                case 0 % Sub-packets are within a total length in bits
+                case 0 % Sub-packets are bounded by a total length in bits
                     [total_length, i] = read_field_dec(enc_packet, i, fmt.type_op.lt0.total_length);
                     [dec_subpackets, j, c_ver] = process_packet(enc_packet(i:i+total_length-1), Inf, c_ver);
-                case 1 % Sub-packets are within a total number of sub-packets
+                case 1 % Sub-packets are bounded by a total number of sub-packets
                     [c_subpackets, i] = read_field_dec(enc_packet, i, fmt.type_op.lt1.nr_subpackets);
                     [dec_subpackets, j, c_ver] = process_packet(enc_packet(i:end), c_subpackets, c_ver);
             end
