@@ -108,20 +108,20 @@ while true
 end
 end
 
-% Read a binary char of size fsize
+% Read a binary code of size fsize
 function [val, next_pos] = read_field_bin(data, pos, fsize)
 end_pos = pos + fsize - 1;
 val = data(pos:end_pos);
 next_pos = end_pos + 1;
 end
 
-% Convert a binary char of size fsize into a decimal value
+% Convert a binary code of size fsize into a decimal value
 function [vald, next_pos] = read_field_dec(data, pos, fsize)
 [val, next_pos] = read_field_bin(data, pos, fsize);
 vald = bin2dec(val);
 end
 
-% Process a literal value type_id
+% Process a literal value (type_id == 4)
 function [val, pos] = read_lv_dec(data, pos, s)
 lv = '';
 while true
