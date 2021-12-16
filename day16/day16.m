@@ -96,11 +96,11 @@ while true
                     [c_subpackets, i] = read_field_dec(enc_packet, i, fmt.type_op.lt1.nr_subpackets);
                     [dec_subpackets, j, c_ver] = process_packet(enc_packet(i:end), c_subpackets, c_ver);
             end
-            % Adjust the bit pointer after sub-packets processing
+            % Adjust the bit pointer after sub-packet processing
             i = i + j - 1;
-            % Get the operator function to apply from the type_id
+            % Get the operator function from the type_id
             op_fun = op_funcs(dec_packet(p).type_id);
-            % Apply op_fun to an array of sub-packet resolved values
+            % Apply op_fun to an array consisting of sub-packet values
             dec_packet(p).value = op_fun(arrayfun(@(x) dec_subpackets(x).value, 1:numel(dec_subpackets)));
     end
     %dec_packet(p).subpckts = dec_subpackets;
