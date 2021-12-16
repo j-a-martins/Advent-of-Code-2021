@@ -125,11 +125,11 @@ end
 function [val, pos] = read_lv_dec(data, pos, s)
 lv = '';
 while true
-    % Check if more groups are next
+    % Check if more groups are present
     [more, pos] = read_field_dec(data, pos, s.more);
-    % Get the bits for the group
+    % Get the bits for the current group
     [lv(:, end+1), pos] = read_field_bin(data, pos, s.lv);
     if ~more, break, end
 end
-val = bin2dec(lv(:).');
+val = bin2dec(lv(:).'); % Return as decimal
 end
