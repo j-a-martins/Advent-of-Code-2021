@@ -10,7 +10,7 @@ f_id = fopen(file, 'r'); data = fscanf(f_id, 'target area: x=%d..%d, y=%d..%d', 
 
 g_max_y = 0; % Store the global max y for Part 1
 c_solutions = 0; % Solution counter
-for v0_x = 1:data(2) % From 1 to x_max
+for v0_x = floor((sqrt(8*data(1)+1)-1)/2):data(2) % From v0_x*(v0_x+1)/2 >= xmin to x_max
     for v0_y = data(3):-data(3) % From y_min to -y_min
         max_y = 0;
         t = 0;
