@@ -9,7 +9,7 @@ f_id = fopen(file, 'r'); data = fscanf(f_id, 'target area: x=%d..%d, y=%d..%d', 
 % data(1) < x < data(2), data(3) < y < data(4)
 
 g_max_y = 0; % Store the global max y for Part 1
-solutions = []; % Store found solutions
+c_solutions = 0; % Solution counter
 for v0_x = 1:data(2) % From 1 to x_max
     for v0_y = data(3):-data(3) % From y_min to -y_min
         max_y = 0;
@@ -23,19 +23,18 @@ for v0_x = 1:data(2) % From 1 to x_max
             if posy > max_y, max_y = posy; end
             % Check if solution is found
             if posx >= data(1) && posx <= data(2) && posy >= data(3) && posy <= data(4)
-                % Store the current solution
-                solutions(end+1, :) = [v0_x v0_y];
+                % Increase the solution counter
+                c_solutions = c_solutions + 1;
                 % Update the global max y if the trajectory was valid
                 if max_y > g_max_y, g_max_y = max_y; end
+                break
             end
         end
     end
 end
-% Clear repeated solutions
-solutions = height(unique(solutions, 'rows'));
 
 disp("Part 1: The max y was " + g_max_y)
-disp("Part 2: There are " + solutions + " solutions")
+disp("Part 2: There are " + c_solutions + " solutions")
 end
 
 %% Aux functions
