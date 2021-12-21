@@ -101,8 +101,8 @@ for i = 1:numel(l)
             % Get the indices for the closest points
             [~, id1] = sort(distances{dd1}(point_row(d1), :));
             [~, id2] = sort(distances{dd2}(point_row(d2), :));
-            % Restrict to n neighbours
-            id1 = id1(1:n); id2 = id2(1:n);
+            % Restrict to point + n neighbours
+            id1 = id1(1:1+n); id2 = id2(1:1+n);
             % Get the fingerprint points
             p1 = data{dd1}(id1, :);
             p2 = data{dd2}(id2, :);
