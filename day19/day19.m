@@ -177,9 +177,6 @@ end
 
 %% Find rotations
 function [data, sensor] = find_rotation_and_bias(quat, data, sensor, p1, p2, d1, d2)
-% Sanitize
-p1(isnan(p1(:, 1)), :) = [];
-p2(isnan(p2(:, 1)), :) = [];
 % Convert to relative coords
 p1_rel = p1 - p1(1, :);
 p2_rel = p2 - p2(1, :);
