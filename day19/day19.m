@@ -32,9 +32,7 @@ while true
     % Skip if no matches are found or matches are similar to the previous
     % iteration with the same n neighbours
     if sum(labels(:, :, 2), 'all') == 0 || ~isempty(labels_prev) && sum(labels_prev, 'all') == sum(labels, 'all')
-        n = n - 1;
-        labels_prev = [];
-        continue
+        n = n - 1; labels_prev = []; continue
     else
         labels_prev = labels;
     end
@@ -54,7 +52,7 @@ disp("Part 2: The largest Manhattan distance was " + max(distances{1}, [], 'all'
 
 end
 
-%% Auxiliary functions
+% Auxiliary functions
 
 %% Calculate distances between 3D points
 function dist = calculate_distances(data, type)
@@ -65,7 +63,6 @@ switch type
     case 'manh'
         dist_func = @(a, b) sum(abs(a - b)); % Manhattan
 end
-
 dist = {};
 for d = 1:numel(data)
     h_data = height(data{d});
@@ -82,10 +79,9 @@ end
 function [data, sensor] = process_matches(data, sensor, distances, labels, n)
 % Get all unique rotation quaternions
 q = get_quaternions();
-
-matches = labels(:, :, 2); % Get matches from labels matrix
+% Get matches from labels matrix
+matches = labels(:, :, 2); 
 labels = labels(:, :, 1);
-
 % Find points with matches
 l = labels(matches ~= 0); m = matches(matches ~= 0);
 % Sort downwards from the most matches
@@ -203,6 +199,8 @@ for i = 1:numel(quat)
         data{d2} = [];
         sensor{d1} = unique([s1; s2], 'rows', 'stable');
         sensor{d2} = [];
+        % Terminate loop
+        break
     end
 end
 end
