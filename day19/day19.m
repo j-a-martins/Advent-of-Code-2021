@@ -176,7 +176,7 @@ function [data, sensor] = find_rotation_and_bias(quat, data, sensor, p1, p2, d1,
 % Convert to relative coords
 p1_rel = p1 - p1(1, :);
 p2_rel = p2 - p2(1, :);
-
+% Try rotations until points match
 for i = 1:numel(quat)
     % Rotate the points
     p2_rel_rot = round(rotateframe(quat(i), p2_rel));
